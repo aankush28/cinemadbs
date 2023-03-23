@@ -3,10 +3,11 @@ const { google } = require("googleapis");
 const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 4000;
 app.use(bodyParser())
 app.use(cors())
-app.use('/',express.static("build"))
+
+app.use('/', express.static(path.join(__dirname, "build")));
 app.get('*', function (req, res, next) {
   res.sendFile(path.resolve('./build/index.html'));
 });
